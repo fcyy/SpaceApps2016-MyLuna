@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C934B6CD1CCB63FA006334DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C934B6CC1CCB63FA006334DC /* main.m */; };
+		C934B6D01CCB63FA006334DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C934B6CF1CCB63FA006334DC /* AppDelegate.m */; };
+		C934B6D31CCB63FA006334DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C934B6D21CCB63FA006334DC /* ViewController.m */; };
+		C934B6D61CCB63FA006334DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C934B6D41CCB63FA006334DC /* Main.storyboard */; };
+		C934B6D81CCB63FA006334DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C934B6D71CCB63FA006334DC /* Assets.xcassets */; };
+		C934B6DB1CCB63FA006334DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C934B6D91CCB63FA006334DC /* LaunchScreen.storyboard */; };
+		C934B6E61CCB63FB006334DC /* MyLunaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C934B6E51CCB63FB006334DC /* MyLunaTests.m */; };
+		C934B6F51CCB64CB006334DC /* LunarCalc.m in Sources */ = {isa = PBXBuildFile; fileRef = C934B6F31CCB64CB006334DC /* LunarCalc.m */; };
+		C934B6F71CCB88CF006334DC /* moon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C934B6F61CCB88CF006334DC /* moon.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C934B6E21CCB63FA006334DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C934B6C01CCB63FA006334DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C934B6C71CCB63FA006334DC;
+			remoteInfo = MyLuna;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C934B6C81CCB63FA006334DC /* MyLuna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLuna.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C934B6CC1CCB63FA006334DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C934B6CE1CCB63FA006334DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C934B6CF1CCB63FA006334DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C934B6D11CCB63FA006334DC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C934B6D21CCB63FA006334DC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C934B6D51CCB63FA006334DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C934B6D71CCB63FA006334DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C934B6DA1CCB63FA006334DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C934B6DC1CCB63FA006334DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C934B6E11CCB63FA006334DC /* MyLunaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyLunaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C934B6E51CCB63FB006334DC /* MyLunaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyLunaTests.m; sourceTree = "<group>"; };
+		C934B6E71CCB63FB006334DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C934B6F31CCB64CB006334DC /* LunarCalc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunarCalc.m; sourceTree = "<group>"; };
+		C934B6F41CCB64CB006334DC /* LunarCalc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LunarCalc.h; sourceTree = "<group>"; };
+		C934B6F61CCB88CF006334DC /* moon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moon.jpg; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C934B6C51CCB63FA006334DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C934B6DE1CCB63FA006334DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C934B6BF1CCB63FA006334DC = {
+			isa = PBXGroup;
+			children = (
+				C934B6CA1CCB63FA006334DC /* MyLuna */,
+				C934B6E41CCB63FB006334DC /* MyLunaTests */,
+				C934B6C91CCB63FA006334DC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C934B6C91CCB63FA006334DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C934B6C81CCB63FA006334DC /* MyLuna.app */,
+				C934B6E11CCB63FA006334DC /* MyLunaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C934B6CA1CCB63FA006334DC /* MyLuna */ = {
+			isa = PBXGroup;
+			children = (
+				C934B6F61CCB88CF006334DC /* moon.jpg */,
+				C934B6F31CCB64CB006334DC /* LunarCalc.m */,
+				C934B6F41CCB64CB006334DC /* LunarCalc.h */,
+				C934B6CE1CCB63FA006334DC /* AppDelegate.h */,
+				C934B6CF1CCB63FA006334DC /* AppDelegate.m */,
+				C934B6D11CCB63FA006334DC /* ViewController.h */,
+				C934B6D21CCB63FA006334DC /* ViewController.m */,
+				C934B6D41CCB63FA006334DC /* Main.storyboard */,
+				C934B6D71CCB63FA006334DC /* Assets.xcassets */,
+				C934B6D91CCB63FA006334DC /* LaunchScreen.storyboard */,
+				C934B6DC1CCB63FA006334DC /* Info.plist */,
+				C934B6CB1CCB63FA006334DC /* Supporting Files */,
+			);
+			path = MyLuna;
+			sourceTree = "<group>";
+		};
+		C934B6CB1CCB63FA006334DC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C934B6CC1CCB63FA006334DC /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C934B6E41CCB63FB006334DC /* MyLunaTests */ = {
+			isa = PBXGroup;
+			children = (
+				C934B6E51CCB63FB006334DC /* MyLunaTests.m */,
+				C934B6E71CCB63FB006334DC /* Info.plist */,
+			);
+			path = MyLunaTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C934B6C71CCB63FA006334DC /* MyLuna */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C934B6EA1CCB63FB006334DC /* Build configuration list for PBXNativeTarget "MyLuna" */;
+			buildPhases = (
+				C934B6C41CCB63FA006334DC /* Sources */,
+				C934B6C51CCB63FA006334DC /* Frameworks */,
+				C934B6C61CCB63FA006334DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyLuna;
+			productName = MyLuna;
+			productReference = C934B6C81CCB63FA006334DC /* MyLuna.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C934B6E01CCB63FA006334DC /* MyLunaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C934B6ED1CCB63FB006334DC /* Build configuration list for PBXNativeTarget "MyLunaTests" */;
+			buildPhases = (
+				C934B6DD1CCB63FA006334DC /* Sources */,
+				C934B6DE1CCB63FA006334DC /* Frameworks */,
+				C934B6DF1CCB63FA006334DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C934B6E31CCB63FA006334DC /* PBXTargetDependency */,
+			);
+			name = MyLunaTests;
+			productName = MyLunaTests;
+			productReference = C934B6E11CCB63FA006334DC /* MyLunaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C934B6C01CCB63FA006334DC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Aquinas Solutions";
+				TargetAttributes = {
+					C934B6C71CCB63FA006334DC = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					C934B6E01CCB63FA006334DC = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = C934B6C71CCB63FA006334DC;
+					};
+				};
+			};
+			buildConfigurationList = C934B6C31CCB63FA006334DC /* Build configuration list for PBXProject "MyLuna" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C934B6BF1CCB63FA006334DC;
+			productRefGroup = C934B6C91CCB63FA006334DC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C934B6C71CCB63FA006334DC /* MyLuna */,
+				C934B6E01CCB63FA006334DC /* MyLunaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C934B6C61CCB63FA006334DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C934B6F71CCB88CF006334DC /* moon.jpg in Resources */,
+				C934B6DB1CCB63FA006334DC /* LaunchScreen.storyboard in Resources */,
+				C934B6D81CCB63FA006334DC /* Assets.xcassets in Resources */,
+				C934B6D61CCB63FA006334DC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C934B6DF1CCB63FA006334DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C934B6C41CCB63FA006334DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C934B6D31CCB63FA006334DC /* ViewController.m in Sources */,
+				C934B6D01CCB63FA006334DC /* AppDelegate.m in Sources */,
+				C934B6CD1CCB63FA006334DC /* main.m in Sources */,
+				C934B6F51CCB64CB006334DC /* LunarCalc.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C934B6DD1CCB63FA006334DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C934B6E61CCB63FB006334DC /* MyLunaTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C934B6E31CCB63FA006334DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C934B6C71CCB63FA006334DC /* MyLuna */;
+			targetProxy = C934B6E21CCB63FA006334DC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C934B6D41CCB63FA006334DC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C934B6D51CCB63FA006334DC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C934B6D91CCB63FA006334DC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C934B6DA1CCB63FA006334DC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C934B6E81CCB63FB006334DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		C934B6E91CCB63FB006334DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C934B6EB1CCB63FB006334DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MyLuna/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquinassolutions.MyLuna;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C934B6EC1CCB63FB006334DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MyLuna/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquinassolutions.MyLuna;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C934B6EE1CCB63FB006334DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MyLunaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquinassolutions.MyLunaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyLuna.app/MyLuna";
+			};
+			name = Debug;
+		};
+		C934B6EF1CCB63FB006334DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MyLunaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquinassolutions.MyLunaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyLuna.app/MyLuna";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C934B6C31CCB63FA006334DC /* Build configuration list for PBXProject "MyLuna" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C934B6E81CCB63FB006334DC /* Debug */,
+				C934B6E91CCB63FB006334DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C934B6EA1CCB63FB006334DC /* Build configuration list for PBXNativeTarget "MyLuna" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C934B6EB1CCB63FB006334DC /* Debug */,
+				C934B6EC1CCB63FB006334DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C934B6ED1CCB63FB006334DC /* Build configuration list for PBXNativeTarget "MyLunaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C934B6EE1CCB63FB006334DC /* Debug */,
+				C934B6EF1CCB63FB006334DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C934B6C01CCB63FA006334DC /* Project object */;
+}
