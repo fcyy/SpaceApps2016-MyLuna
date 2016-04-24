@@ -2,6 +2,42 @@
   "images" : [
     {
       "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "ShootingStarAppIcon-29@2x-1.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "ShootingStarAppIcon-29@2x-2.png",
+      "scale" : "3x"
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "ShootingStarAppIcon-40@2x-1.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "ShootingStarAppIcon-40@2x-2.png",
+      "scale" : "3x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "ShootingStarAppIcon-60@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "ShootingStarAppIcon-60@2x-1.png",
+      "scale" : "3x"
+    },
+    {
+      "size" : "29x29",
       "idiom" : "ipad",
       "filename" : "ShootingStarAppIcon-29.png",
       "scale" : "1x"

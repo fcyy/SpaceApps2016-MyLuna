@@ -31,6 +31,8 @@ static NSString * const knasa2Image = @"nasa2";
 @property (weak, nonatomic) UIImageView *rightArrow;
 @property (weak, nonatomic) UIImageView *net;
 @property (weak, nonatomic) UIButton *resetButton;
+@property (weak, nonatomic) UIImageView *img1;
+@property (weak, nonatomic) UIImageView *img2;
 
 @property (readonly, nonatomic) CLLocationManager *locManager;
 @property (readonly, nonatomic) CMMotionManager *motionManager;
@@ -181,16 +183,6 @@ static NSString * const knasa2Image = @"nasa2";
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:net attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:net attribute:NSLayoutAttributeWidth multiplier:1.0f constant:0.0f]];
     [self.view sendSubviewToBack:net];
 
-    // Reset button
-    UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    resetButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [resetButton setTitle:NSLocalizedString(@"Reset", nil) forState:UIControlStateNormal];
-    [resetButton addTarget:self action:@selector(didTapReset:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:resetButton];
-    self.resetButton = resetButton;
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:resetButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:resetButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:downArrow attribute:NSLayoutAttributeTop multiplier:1.0f constant:-AQUA_PEER]];
-    
     // data
     UILabel *headingLabel = [[UILabel alloc] init];
     headingLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -199,10 +191,19 @@ static NSString * const knasa2Image = @"nasa2";
     headingLabel.font = [UIFont systemFontOfSize:12.0f];
     [self.view addSubview:headingLabel];
     self.headingLabel = headingLabel;
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.headingLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:0.4f constant:0.0f]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.headingLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:0.25f constant:0.0f]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.headingLabel attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRightMargin multiplier:1.0f constant:0.0f]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.headingLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:1.0f constant:0.0f]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.headingLabel attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeftMargin multiplier:1.0f constant:0.0f]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.headingLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottomMargin multiplier:1.0f constant:0.0f]];
+    
+    // Reset button
+    UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    resetButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [resetButton setTitle:NSLocalizedString(@"Reset", nil) forState:UIControlStateNormal];
+    [resetButton addTarget:self action:@selector(didTapReset:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:resetButton];
+    self.resetButton = resetButton;
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:resetButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:headingLabel attribute:NSLayoutAttributeLeft multiplier:1.0f constant:0.0f]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:resetButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:headingLabel attribute:NSLayoutAttributeTop multiplier:1.0f constant:-AQUA_PEER]];
 }
 
 - (void)updateUI
@@ -212,32 +213,29 @@ static NSString * const knasa2Image = @"nasa2";
     
     LunarCalc *lc = self.lunarCalc;
     
-//    lc.observerDateTime = [NSDate date];
+    lc.observerDateTime = [NSDate date];
 
     // Test using a fixed date.
-    NSDateComponents *comp = [[NSDateComponents alloc] init];
-    comp.year = 2016;
-    comp.month = 4;
-    comp.day = 23;
-    comp.hour = 20;
-    comp.minute = 0;
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    gregorian.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"AEST"];
-    lc.observerDateTime = [gregorian dateFromComponents:comp];
+//    NSDateComponents *comp = [[NSDateComponents alloc] init];
+//    comp.year = 2016;
+//    comp.month = 4;
+//    comp.day = 23;
+//    comp.hour = 20;
+//    comp.minute = 0;
+//    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+//    gregorian.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"AEST"];
+//    lc.observerDateTime = [gregorian dateFromComponents:comp];
 
     // Calculate lunar position.
     [lc calc];
     
     CMDeviceMotion *motion = self.motionManager.deviceMotion;
     
-    CMQuaternion quat = motion.attitude.quaternion;
-    
-    CGFloat pitch = RADIANS_TO_DEGREES(atan2(2*(quat.x*quat.w + quat.y*quat.z), 1 - 2*quat.x*quat.x - 2*quat.z*quat.z));
-    
     CLLocationDirection trueHeading = self.heading.trueHeading;
     
     CGFloat p = RADIANS_TO_DEGREES(motion.attitude.pitch);
-    CGFloat deviceAltitude = motion.gravity.z < 0 ? 90.0f + p : 90.0f - p;
+//    CGFloat deviceAltitude = motion.gravity.z < 0 ? 90.0f + p : 90.0f - p;
+    CGFloat deviceAltitude = motion.gravity.z < 0 ? p - 90.0f : 90.0f - p;
     
     CGFloat hOffset = lc.azimuth - trueHeading;
     CGFloat vOffset = deviceAltitude - lc.altitude;
@@ -289,10 +287,9 @@ static NSString * const knasa2Image = @"nasa2";
         }];
         
         self.headingLabel.text = [NSString stringWithFormat:
-                                  @"Lat/Long: %.4f/%.4f\n Local time: %@ \n UTC time: %@ \n True heading: %.2f\n Alt: %.2f\n Az: %.2f\n Attitude: %@\n Pitch: %.1f\n Tilt: %@\n Upright pitch: %.1f\n Offset (Az,Alt): %.1f, %.1f\n Moon center: %.1f,%.1f\n Delta: %@",
+                                  @" Lat/Long: %.4f/%.4f\n Local time: %@ \n UTC time: %@ \n True heading: %.2f\n Alt: %.2f\n Az: %.2f\n Attitude: %@\n Tilt: %@\n Upright pitch: %.1f\n Offset (Az,Alt): %.1f, %.1f\n Moon center: %.1f,%.1f\n Delta: %@",
                                   
-                                  /*self.lunarCalc.latitude,self.lunarCalc.longitude,*/
-                                  999.0f, 999.0f,
+                                  self.lunarCalc.latitude,self.lunarCalc.longitude,
                                   self.lunarCalc.observerLocalDateTimeString,
                                   self.lunarCalc.observerUTCDateTimeString,
                                   trueHeading,
@@ -302,7 +299,6 @@ static NSString * const knasa2Image = @"nasa2";
                                    RADIANS_TO_DEGREES(motion.attitude.pitch),
                                    RADIANS_TO_DEGREES(motion.attitude.roll),
                                    RADIANS_TO_DEGREES(motion.attitude.yaw)],
-                                  pitch,
                                   motion.gravity.z > 0 ? @"fwd" : @"bwd",
                                   deviceAltitude,
                                   hOffset,
@@ -341,6 +337,12 @@ static NSString * const knasa2Image = @"nasa2";
     [self moonToInitialScreenPosition];
     self.net.layer.opacity = 1.0f;
     self.view.backgroundColor = [UIColor whiteColor];
+    if (self.img1) {
+        self.img1.hidden = YES;
+    }
+    if (self.img2) {
+        self.img2.hidden = YES;
+    }
 }
 
 - (void)moonToInitialScreenPosition
@@ -350,17 +352,24 @@ static NSString * const knasa2Image = @"nasa2";
 
 - (void)showMoonInfo
 {
-    UIImageView *img1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:knasa1Image]];
-    img1.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:img1];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:img1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.moonImageView attribute:NSLayoutAttributeRight multiplier:1.0f constant:50.0f]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:img1 attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.moonImageView attribute:NSLayoutAttributeTop multiplier:1.0f constant:0.0f]];
-
-    UIImageView *img2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:knasa2Image]];
-    img2.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:img2];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:img2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.moonImageView attribute:NSLayoutAttributeRight multiplier:1.0f constant:50.0f]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:img2 attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:img1 attribute:NSLayoutAttributeBottom multiplier:1.0f constant:30.0f]];
+    if (self.img1 == nil) {
+        UIImageView *img1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:knasa1Image]];
+        img1.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.view addSubview:img1];
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:img1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.moonImageView attribute:NSLayoutAttributeRight multiplier:1.0f constant:50.0f]];
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:img1 attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.moonImageView attribute:NSLayoutAttributeTop multiplier:1.0f constant:0.0f]];
+        self.img1 = img1;
+        
+        UIImageView *img2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:knasa2Image]];
+        img2.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.view addSubview:img2];
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:img2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.moonImageView attribute:NSLayoutAttributeRight multiplier:1.0f constant:50.0f]];
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:img2 attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:img1 attribute:NSLayoutAttributeBottom multiplier:1.0f constant:30.0f]];
+        self.img2 = img2;
+    } else {
+        self.img1.hidden = NO;
+        self.img2.hidden = NO;
+    }
 }
 
 @end
