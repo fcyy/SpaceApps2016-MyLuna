@@ -43,6 +43,8 @@ static NSString * const knasa2Image = @"nasa2";
 @property (atomic) BOOL isUpdatingUI;
 @property (atomic) BOOL moonLocked;
 
+@property (strong, nonatomic) CADisplayLink *displayLink;
+
 @end
 
 /*
@@ -120,15 +122,9 @@ static NSString * const knasa2Image = @"nasa2";
         [self.locManager startUpdatingLocation];
     }
 
-    // Set up accelerometer to update UI
-    self.motionManager.accelerometerUpdateInterval = .2;
-    [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue]
-                                             withHandler:^(CMAccelerometerData  *accelerometerData, NSError *error) {
-                                                 [self.opQueue addOperationWithBlock:^{
-                                                     [self updateUI];
-                                                 }];
-                                             }];
-    
+    // Update UI
+    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateUI)];
+    [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
 }
 
 - (void)buildUI
@@ -234,16 +230,27 @@ static NSString * const knasa2Image = @"nasa2";
     CLLocationDirection trueHeading = self.heading.trueHeading;
     
     CGFloat p = RADIANS_TO_DEGREES(motion.attitude.pitch);
-//    CGFloat deviceAltitude = motion.gravity.z < 0 ? 90.0f + p : 90.0f - p;
     CGFloat deviceAltitude = motion.gravity.z < 0 ? p - 90.0f : 90.0f - p;
+    
+    // When device is pointed upwards past 45 degrees from the vertical, upright position, the compass flips 180 degrees
+    // as though the compass was being read with the face towards the earth.
+    if (deviceAltitude > 45.0f) {
+        trueHeading -= 180.0f;
+    }
     
     CGFloat hOffset = lc.azimuth - trueHeading;
     CGFloat vOffset = deviceAltitude - lc.altitude;
     
-    const CGFloat kArmLengthDistance = 1024 * 2.5; // arm-length distance to device from eye in points
+    // Calculate scale factors for directional arrows
+    CGFloat const kMinSizeScale = 0.05f;
+    CGFloat hScale = fabs((1.0f + kMinSizeScale) - (180.0f - fabs(hOffset)) / 180.f);
+    hScale = hScale >= kMinSizeScale && hScale <= 1.0f ? hScale : 1.0f;
+    CGFloat vScale = fabs((1.0f + kMinSizeScale) - (180.0f - fabs(vOffset)) / 180.f);
+    vScale = vScale >= kMinSizeScale && vScale <= 1.0f ? vScale : 1.0f;
     
-    CGFloat deltaX = kArmLengthDistance * tan(DEGREES_TO_RADIANS(hOffset/2)) * 2;
-    CGFloat deltaY = kArmLengthDistance * tan(DEGREES_TO_RADIANS(vOffset/2)) * 2;
+    const CGFloat kViewingDistance = 1024; // distance to device from eye in points
+    CGFloat deltaX = kViewingDistance * tan(DEGREES_TO_RADIANS(hOffset/2)) * 2;
+    CGFloat deltaY = kViewingDistance * tan(DEGREES_TO_RADIANS(vOffset/2)) * 2;
     
     CGPoint center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
     CGPoint newCenter = CGPointMake(center.x + deltaX, center.y + deltaY);
@@ -263,8 +270,14 @@ static NSString * const knasa2Image = @"nasa2";
         self.rightArrow.hidden = (newCenter.x < CGRectGetMaxX(self.view.bounds));
 
         // Move moon
-        [UIView animateWithDuration:0.1f animations:^{
+        [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.moonImageView.center = newCenter;
+            
+            self.upArrow.transform = CGAffineTransformMakeScale(vScale, vScale);
+            self.downArrow.transform = CGAffineTransformScale(CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(180)), vScale, vScale);
+            self.leftArrow.transform = CGAffineTransformScale(CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(-90)), hScale, hScale);
+            self.rightArrow.transform = CGAffineTransformScale(CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90)), hScale, hScale);
+            
         } completion:^(BOOL finished) {
             
             // moon locked
@@ -287,7 +300,7 @@ static NSString * const knasa2Image = @"nasa2";
         }];
         
         self.headingLabel.text = [NSString stringWithFormat:
-                                  @" Lat/Long: %.4f/%.4f\n Local time: %@ \n UTC time: %@ \n True heading: %.2f\n Alt: %.2f\n Az: %.2f\n Attitude: %@\n Tilt: %@\n Upright pitch: %.1f\n Offset (Az,Alt): %.1f, %.1f\n Moon center: %.1f,%.1f\n Delta: %@",
+                                  @" Lat/Long: %.4f/%.4f\n Local time: %@ \n UTC time: %@ \n True heading: %.2f\n Alt: %.2f\n Az: %.2f\n Attitude: %@\n Tilt: %@\n Upright pitch: %.1f\n Offset (Az,Alt): %.1f, %.1f\n Scale factor (h,v): %.1f, %.1f\n Moon center: %.1f,%.1f\n Delta: %@",
                                   
                                   self.lunarCalc.latitude,self.lunarCalc.longitude,
                                   self.lunarCalc.observerLocalDateTimeString,
@@ -301,8 +314,8 @@ static NSString * const knasa2Image = @"nasa2";
                                    RADIANS_TO_DEGREES(motion.attitude.yaw)],
                                   motion.gravity.z > 0 ? @"fwd" : @"bwd",
                                   deviceAltitude,
-                                  hOffset,
-                                  vOffset,
+                                  hOffset, vOffset,
+                                  hScale, vScale,
                                   newCenter.x, newCenter.y,
                                   [NSString stringWithFormat:@"%.0f,%.0f", deltaX, deltaY]
                                   ];
@@ -314,9 +327,6 @@ static NSString * const knasa2Image = @"nasa2";
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
 {
     self.heading = newHeading;
-    [self.opQueue addOperationWithBlock:^{
-        [self updateUI];
-    }];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
@@ -325,9 +335,6 @@ static NSString * const knasa2Image = @"nasa2";
     if (latestLoc) {
         self.lunarCalc.latitude = latestLoc.coordinate.latitude;
         self.lunarCalc.longitude = latestLoc.coordinate.longitude;
-        [self.opQueue addOperationWithBlock:^{
-            [self updateUI];
-        }];
     }
 }
 
